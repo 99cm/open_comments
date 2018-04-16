@@ -1,0 +1,7 @@
+<li <%== ' class="active"' if (defined? current and current == 'Comments') %>>
+  <% if @shipment.comments.any? %>
+    <%= link_to_with_icon 'comment', Spree.t(:comments_count, count: @shipment.comments.count), comments_admin_order_shipment_url(@shipment) %>
+  <% else %>
+    <%= link_to_with_icon 'comment', Spree.t(:comments), comments_admin_order_shipment_url(@shipment) %>
+  <% end %>
+</li>

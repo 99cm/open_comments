@@ -1,6 +1,6 @@
-Spree::Admin::ShipmentsController.class_eval do
+Spree::Api::V1::ShipmentsController.class_eval do
   def comments
-    @order = @shipment.order
+    shipment
     @comment_types = Spree::CommentType.where(:applies_to => "Shipment")
   end
 end
