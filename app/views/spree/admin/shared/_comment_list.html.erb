@@ -7,12 +7,12 @@
       <% type = comment.comment_type.try(:name) || '' %>
 
       <div class="col-xs-2 text-center <%= type == 'Lender' ? 'pull-right' : 'pull-left' %>">
-        <% if defined?(supplier) && !supplier.profile_picture.blank? %>
+        <% if supplier.blank? || supplier.profile_picture.blank? %>
+          <div style='background-image:url("");background-size:cover;background-position:center;border:3px solid #2ba28a !important;' class="supplier_image" ></div>
+        <% else %>
           <%= link_to '/suppliers/'+supplier.id.to_s do %>
             <div style='background-image:url("<%= supplier.profile_picture.url(:small) %>");background-size:cover;background-position:center;' class="supplier_image" ></div>
           <% end %>
-        <% else %>
-          <div style='background-image:url("");background-size:cover;background-position:center;border:3px solid #2ba28a !important;' class="supplier_image" ></div>
         <% end %>
         <div style="color:#2ba28a;"><%= type %></div>
       </div>

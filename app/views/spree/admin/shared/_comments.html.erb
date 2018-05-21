@@ -37,7 +37,7 @@
           <% types = @comment_types.where(name: type) %>
         <% end %>
 
-        <% if @comment_types.count >= 1 %>
+        <% if @comment_types.count >= 1 && types %>
           <%= hidden_field_tag 'comment[comment_type_id]', types.first.try(:id) %>
         <% else %>
           <div class="field">
