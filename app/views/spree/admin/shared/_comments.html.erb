@@ -12,18 +12,14 @@
     <%= hidden_field_tag 'comment[commentable_type]', commentable.class %>
     <%= hidden_field_tag 'comment[user_id]', spree_current_user.id %>
 
+
+
     <fieldset data-hook="admin_comment_form_fields" class="no-border-top">
       <fieldset class="index no-border-bottom">
-        <legend align="center"><%= Spree.t(:add_comment) %></legend>
 
         <div data-hook="comment_fields" class="row">
           <div class="col-md-12">
-            <% if @comment_types.present? %>
-              <div class="field">
-                <%= f.label :comment_type_id, Spree.t(:type) %>
-                <%= f.select :comment_type_id, @comment_types.map{|ct| [ct.name, ct.id]},{} ,:class => 'form-control' %>
-              </div>
-            <% end %>
+            
             <div class="field">
               <%= f.label :comment, Spree.t(:comment) %>
               <%= f.text_area :comment, :style => 'height:150px;', :class => 'form-control' %>
@@ -35,6 +31,20 @@
       <div class="clear"></div>
 
       <div class="form-buttons filter-actions actions" data-hook="buttons">
+
+        <% if !spree_current_user.admin? && commentable.class==Spree::Shipment %>
+          <% type = spree_current_user.supplier.id == commentable.stock_location.supplier.id ? 'Lender' : 'Borrower' %>
+          <% types = @comment_types.where(name: type) %>
+        <% end %>
+
+        <% if @comment_types.count >= 1 %>
+          <%= hidden_field_tag 'comment[comment_type_id]', types.first.try(:id) %>
+        <% else %>
+          <div class="field">
+            <%= f.label :comment_type_id, Spree.t(:type) %>
+            <%= f.select :comment_type_id, types || @comment_types.map{|ct| [ct.name, ct.id]},{} ,:class => 'form-control' %>
+          </div><br>
+        <% end %>
         <%= button Spree.t(:add_comment), 'icon-arrow-right' %>
       </div>
     </fieldset>

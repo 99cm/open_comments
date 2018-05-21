@@ -1,21 +1,29 @@
-<table class="index table">
-  
-  <thead>
-    <tr>
-      <th><%= "#{t('spree.date')}/#{t('spree.time')}" %></th>
-      <th><%= Spree.t(:type) %></th>
-      <th><%= Spree.t(:commenter) %></th>
-      <th><%= Spree.t(:comment) %></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% commentable.comments.reverse.each_with_index do |comment, index| %>
-      <tr class="<%= cycle('odd', 'even')%>">
-        <td class='align-center'><%= pretty_time(comment.created_at) %></td>
-        <td class='align-center'><%= comment.comment_type.try(:name) || Spree.t(:none) %></td>
-        <td class='align-center'><%= comment.user.try(:email) %></td>
-        <td><%= comment.comment.html_safe %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div id="lender_logistics">
+    
+  <% commentable.comments.reverse.each_with_index do |comment, index| %>
+    <div class="row">
+
+      <% supplier = comment.user.supplier %>
+      <% type = comment.comment_type.try(:name) || '' %>
+
+      <div class="col-xs-2 text-center <%= type == 'Lender' ? 'pull-right' : 'pull-left' %>">
+        <% if defined?(supplier) && !supplier.profile_picture.blank? %>
+          <%= link_to '/suppliers/'+supplier.id.to_s do %>
+            <div style='background-image:url("<%= supplier.profile_picture.url(:small) %>");background-size:cover;background-position:center;' class="supplier_image" ></div>
+          <% end %>
+        <% else %>
+          <div style='background-image:url("");background-size:cover;background-position:center;border:3px solid #2ba28a !important;' class="supplier_image" ></div>
+        <% end %>
+        <div style="color:#2ba28a;"><%= type %></div>
+      </div>
+
+      <div class='col-xs-10 <%= type == 'Lender' ? 'pull-right' : 'pull-left' %>' style="min-width:300px;max-width:750px;">
+        <div style="border:3px solid #2ba28a;border-radius:15px;padding:15px; <%= type == 'Lender' ? 'background:#2ba28a;color:white;' : '' %>">
+          <b><%= comment.user.name %></b><br>
+          <%= comment.comment.html_safe %>
+        </div>
+        <div style="color:grey;margin:0 15px; <%= type == 'Borrower' ? 'text-align:right' : '' %>"><%= pretty_time(comment.created_at) %></div>
+      </div>
+    </div>
+  <% end %>
+</div>
