@@ -12,7 +12,7 @@
     <%= hidden_field_tag 'comment[commentable_type]', commentable.class %>
     <%= hidden_field_tag 'comment[user_id]', spree_current_user.id %>
 
-
+    <% @comment_types ||= Spree::CommentType.where(:applies_to => "Shipment")%>
 
     <fieldset data-hook="admin_comment_form_fields" class="no-border-top">
       <fieldset class="index no-border-bottom">
@@ -33,7 +33,7 @@
       <div class="form-buttons filter-actions actions" data-hook="buttons">
 
         <% if !spree_current_user.admin? && commentable.class==Spree::Shipment %>
-          <% type = spree_current_user.supplier.id == commentable.stock_location.supplier.id ? 'Lender' : 'Borrower' %>
+          <% type = commentable.is_lender?(spree_current_user) ? 'Lender' : 'Borrower' %>
           <% types = @comment_types.where(name: type) %>
         <% end %>
 
@@ -42,7 +42,7 @@
         <% else %>
           <div class="field">
             <%= f.label :comment_type_id, Spree.t(:type) %>
-            <%= f.select :comment_type_id, types || @comment_types.map{|ct| [ct.name, ct.id]},{} ,:class => 'form-control' %>
+            <%= f.select :comment_type_id, types || @comment_types.sort_by {|obj| obj.name}.map{|ct| [ct.name, ct.id]},{} ,:class => 'form-control' %>
           </div><br>
         <% end %>
         <%= button Spree.t(:add_comment), 'icon-arrow-right' %>

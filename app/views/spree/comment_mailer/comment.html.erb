@@ -1,0 +1,13 @@
+Nu comment from <%= @comment.user.name %> (<%= @comment.comment_type.name %>):
+<br><br>
+<div>
+	<%= simple_format(@comment.comment) %>
+</div>
+<br>
+at <%= @comment.created_at %>
+<br>
+<br>
+
+
+Click here to respond:<br>
+<%= link_to 'Message '+@comment.user.name, 'https://browse.thenuwardrobe.com/suppliers/'+spree.edit_admin_shipment_path(@shipment) %>
