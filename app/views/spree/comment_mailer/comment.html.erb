@@ -10,4 +10,6 @@ at <%= @comment.created_at %>
 
 
 Click here to respond:<br>
-<%= link_to 'Message '+@comment.user.name, 'https://browse.thenuwardrobe.com/suppliers/'+spree.edit_admin_shipment_path(@shipment) %>
+<%= link_to 'https://browse.thenuwardrobe.com'+spree.edit_admin_shipment_path(@shipment) do %>
+<button style="padding:15px;background:#2ba28a;color:white;border:none;border-radius:10px;font-weight: bold;"><%= @comment.comment_type.name=='Admin' ? 'Nu Chat' : 'Message '+@comment.user.name %></button>
+<% end %> 

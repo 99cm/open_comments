@@ -30,8 +30,7 @@
 
       <div class="clear"></div>
 
-      <div class="form-buttons filter-actions actions" data-hook="buttons">
-
+      <div class="form-buttons filter-actions actions text-right" data-hook="buttons">
         <% if !spree_current_user.admin? && commentable.class==Spree::Shipment %>
           <% type = commentable.is_lender?(spree_current_user) ? 'Lender' : 'Borrower' %>
           <% types = @comment_types.where(name: type) %>
