@@ -5,7 +5,7 @@ module Spree
     def comment(comment, shipment, others)
     	@comment = comment
       @shipment = shipment
-      mail to: others.pluck(:email), subject: 'Nu comment from '+comment.user.name+' for '+shipment.number, name: Spree::Store.current.name
+      mail to: others.pluck(:email), subject: 'New comment from '+comment.user.name+' for '+shipment.number, name: Spree::current_store.name
     end
   end
 end
