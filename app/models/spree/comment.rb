@@ -1,7 +1,7 @@
 class Spree::Comment < ActiveRecord::Base
   include ActsAsCommentable::Comment
 
-  belongs_to :commentable, :polymorphic => true
+  belongs_to :commentable, polymorphic: true
   belongs_to :comment_type
 
   default_scope { order('created_at ASC') }
@@ -26,5 +26,4 @@ class Spree::Comment < ActiveRecord::Base
   		Spree::CommentMailer.comment(self,self.commentable,others).deliver_later(wait: 5.seconds)
   	end
   end
-
 end
