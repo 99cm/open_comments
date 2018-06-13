@@ -43,7 +43,7 @@
             <%= f.select :comment_type_id, types || @comment_types.sort_by {|obj| obj.name}.map{|ct| [ct.name, ct.id]},{} , class: 'form-control' %>
           </div><br>
         <% end %>
-        <%= button Spree.t(:add_comment), 'icon-arrow-right' %>
+        <%= f.submit t('spree.add_comment') %>
       </div>
     </fieldset>
   <% end %>
