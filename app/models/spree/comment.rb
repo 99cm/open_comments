@@ -18,11 +18,7 @@ class Spree::Comment < ActiveRecord::Base
   def send_email
   	if self.commentable.class == Spree::Shipment
   		# get other party involved in shipment.
-  		others = self.comment_type.name == 'Admin' ? 
-        [self.commentable.stock_location.supplier.users.first,self.commentable.order.user] : 
-          (self.user == self.commentable.order.user) ? 
-            [self.commentable.stock_location.supplier.users.first] : 
-              [self.commentable.order.user]
+  		others = self.comment_type.name == 'Admin' ? [self.commentable.stock_location.supplier.users.first,self.commentable.order.user] : (self.user == self.commentable.order.user) ? [self.commentable.stock_location.supplier.users.first] : [self.commentable.order.user]
   		Spree::CommentMailer.comment(self,self.commentable,others).deliver_later(wait: 5.seconds)
   	end
   end
