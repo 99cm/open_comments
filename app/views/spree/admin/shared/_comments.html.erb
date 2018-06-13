@@ -1,28 +1,27 @@
 <% if commentable.comments.any? %>
-  <%= render 'spree/admin/shared/comment_list', :commentable => commentable %>
+  <%= render 'spree/admin/shared/comment_list', commentable: commentable %>
 <% else %>
   <div class="col-md-12 no-objects-found">
-    <%= Spree.t(:no_resource_found, resource: I18n.t(:comments, scope: 'spree')) %>
+    <%= t('spree.no_resource_found', resource: I18n.t(:comments, scope: 'spree')) %>
   </div>
 <% end %>
 
 <div class="col-md-12 order-add-comment">
-  <%= form_for(:comment, :url => admin_comments_url) do |f| %>
+  <%= form_for(:comment, url: admin_comments_url) do |f| %>
     <%= hidden_field_tag 'comment[commentable_id]', commentable.id %>
     <%= hidden_field_tag 'comment[commentable_type]', commentable.class %>
     <%= hidden_field_tag 'comment[user_id]', spree_current_user.id %>
 
-    <% @comment_types ||= Spree::CommentType.where(:applies_to => "Shipment")%>
+    <% @comment_types ||= Spree::CommentType.where(applies_to: 'Shipment') %>
 
     <fieldset data-hook="admin_comment_form_fields" class="no-border-top">
       <fieldset class="index no-border-bottom">
 
         <div data-hook="comment_fields" class="row">
           <div class="col-md-12">
-            
             <div class="field">
-              <%= f.label :comment, Spree.t(:comment) %>
-              <%= f.text_area :comment, :style => 'height:150px;', :class => 'form-control' %>
+              <%= f.label :comment, t('spree.comment') %>
+              <%= f.text_area :comment, style: 'height:150px;', class: 'form-control' %>
             </div>
           </div>
         </div>
@@ -40,8 +39,8 @@
           <%= hidden_field_tag 'comment[comment_type_id]', types.first.try(:id) %>
         <% else %>
           <div class="field">
-            <%= f.label :comment_type_id, Spree.t(:type) %>
-            <%= f.select :comment_type_id, types || @comment_types.sort_by {|obj| obj.name}.map{|ct| [ct.name, ct.id]},{} ,:class => 'form-control' %>
+            <%= f.label :comment_type_id, t('spree.type') %>
+            <%= f.select :comment_type_id, types || @comment_types.sort_by {|obj| obj.name}.map{|ct| [ct.name, ct.id]},{} , class: 'form-control' %>
           </div><br>
         <% end %>
         <%= button Spree.t(:add_comment), 'icon-arrow-right' %>
