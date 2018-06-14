@@ -2,3 +2,4 @@
 spec/dummy
 coverage
 Gemfile.lock
+pkg
