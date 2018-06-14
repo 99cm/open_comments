@@ -2,7 +2,7 @@
 Gem::Specification.new do |s|
   s.platform  = Gem::Platform::RUBY
   s.name      = 'spree_comments'
-  s.version   = '3.3.0'
+  s.version   = '3.7.0'
   s.summary   = 'Comments for orders and shipments'
   s.required_ruby_version = '>= 2.1.3'
 
@@ -23,7 +23,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'acts_as_commentable'
 
   s.add_development_dependency 'rspec-rails'
-  s.add_development_dependency 'factory_girl'
+  s.add_development_dependency 'factory_bot'
   s.add_development_dependency 'capybara'
   s.add_development_dependency 'capybara-screenshot'
   s.add_development_dependency 'poltergeist'
@@ -35,8 +35,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'ffaker'
   s.add_development_dependency 'pry-rails'
   s.add_development_dependency 'rubocop'
-  s.add_development_dependency 'sprockets-rails'
-  s.add_development_dependency 'mysql2'
+  s.add_development_dependency 'sprockets-rails'  
   s.add_development_dependency 'pg'
   s.add_development_dependency 'appraisal'
 end
