@@ -1,0 +1,5 @@
+require 'open_api'
+require 'open_backend'
+require 'open_core'
+require 'acts_as_commentable'
+require 'open_comments/engine'

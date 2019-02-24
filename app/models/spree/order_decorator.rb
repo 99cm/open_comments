@@ -1,4 +1,6 @@
 Spree::Order.class_eval do
+  acts_as_commentable
+
   def comment
     comments.first.comment
   end

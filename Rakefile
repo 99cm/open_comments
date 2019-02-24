@@ -16,6 +16,6 @@ end
 
 desc 'Generates a dummy app for testing'
 task :test_app do
-  ENV['LIB_NAME'] = 'spree_comments'
-  Rake::Task['common:test_app'].invoke('Spree::User)
+  ENV['LIB_NAME'] = 'open_comments'
+  Rake::Task['common:test_app'].invoke('Spree::User')
 end

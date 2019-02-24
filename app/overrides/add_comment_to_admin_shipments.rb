@@ -3,4 +3,5 @@ Deface::Override.new(
   name: 'comments_for_order_shipment',
   insert_after: "[data-hook = 'admin_shipment_form']",
   text: "<%= render('spree/admin/shared/comments'), commentable: shipment %>",
-  disabled: false )
+  disabled: false
+)

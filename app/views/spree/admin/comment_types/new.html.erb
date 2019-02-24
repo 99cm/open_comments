@@ -1,11 +1,13 @@
-
+<%= render partial: 'spree/admin/shared/configuration_menu' %>
 
 <% content_for :page_title do %>
-  <%= t('spree.new_comment_type') %>
+  <%= I18n.t('spree.new_comment_type') %>
 <% end %>
 
 <% content_for :page_actions do %>
-  <%= button_to t('spree.back_to_comment_types_list'), admin_comment_types_path, icon: 'icon-arrow-left' %>
+  <li>
+    <%= link_to I18n.t('spree.back_to_comment_types_list'), admin_comment_types_path, :icon => 'icon-arrow-left' %>
+  </li>
 <% end %>
 
 <%= render partial: 'spree/shared/error_messages', locals: { target: @comment_type } %>
@@ -13,8 +15,8 @@
 <%= form_for(:comment_type, url: collection_url) do |f| %>
   <fieldset class="no-border-top">
     <%= render partial: 'form', locals: { f: f } %>
-    <div data-hook="buttons" class="filter-actions actions"><br>
-      <%= button t('spree.create'), 'icon-ok' %>
+    <div data-hook="buttons" class="filter-actions actions">
+      <%= button_tag I18n.t('spree.create'), 'icon-ok' %>
     </div>
   </fieldset>
 <% end %>

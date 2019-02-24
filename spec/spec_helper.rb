@@ -1,18 +1,15 @@
-ENV["RAILS_ENV"] = "test"
+ENV["RAILS_ENV"] ||= "test"
 
 require File.expand_path("../dummy/config/environment.rb", __FILE__)
 
 require 'rspec/rails'
 
-Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
+Dir[Rails.root.join("support/**/*.rb")].each {|f| require f}
 
 RSpec.configure do |config|
-  config.mock_with :rspec
-  # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
-  config.fixture_path = "#{::Rails.root}/spec/fixtures"
+  config.infer_spec_type_from_file_location!
+  config.raise_errors_for_deprecations!
 
-  # If you're not using ActiveRecord, or you'd prefer not to run each of your
-  # examples within a transaction, remove the following line or assign false
-  # instead of true.
-  config.use_transactional_fixtures = true
+  config.example_status_persistence_file_path = "./spec/examples.txt"
+  config.include FeatureHelper, type: :feature
 end

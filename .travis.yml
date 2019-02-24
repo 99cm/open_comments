@@ -1,0 +1,9 @@
+sudo: false
+cache: bundler
+language: ruby
+rvm:
+  - 2.5.3
+env:
+  matrix:
+    - OPEN_BRANCH=master DB=postgres
+    - OPEN_BRANCH=master DB=mysql

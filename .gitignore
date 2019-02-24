@@ -1,5 +1,7 @@
 *.swp
+.DS_Store
 spec/dummy
 coverage
 Gemfile.lock
 pkg
+spec/examples.txt

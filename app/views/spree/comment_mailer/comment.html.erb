@@ -1,7 +1,7 @@
 Ypill comment from <%= @comment.user.name %> (<%= @comment.comment_type.name %>):
 <br><br>
 <div>
-	<%= simple_format(@comment.comment) %>
+  <%= simple_format(@comment.comment) %>
 </div>
 <br>
 at <%= @comment.created_at %>
@@ -12,4 +12,4 @@ at <%= @comment.created_at %>
 Click here to respond:<br>
 <%= link_to 'https://www.ypill.com'+spree.edit_admin_shipment_path(@shipment) do %>
 <button style="padding:15px;background:#2ba28a;color:white;border:none;border-radius:10px;font-weight: bold;"><%= @comment.comment_type.name=='Admin' ? 'WeChat' : 'Message '+@comment.user.name %></button>
-<% end %> 
+<% end %>

@@ -1,17 +1,17 @@
 ---
 en:
   spree:
-    said: said
-    for: for
-    none: None
-    comments: Chat
-    comments_count: Messages (%{count})
-    comment: Chat
     add_comment: Send Message
     add_comment_type: Message Type
-    comment_types: Message Types
-    manage_comment_types: Manage message types
     applies_to: Applies To
-    new_comment_type: New Message Type
-    editing_comment_type: Editing Message Type
     back_to_comment_types_list: Back to Message Types List
+    comment: Message
+    comments: Message
+    comments_count: Messages (%{count})
+    comment_types: Message Types
+    editing_comment_type: Editing Message Type
+    for: for
+    manage_comment_types: Manage message types
+    new_comment_type: New Message Type
+    none: None
+    said: said

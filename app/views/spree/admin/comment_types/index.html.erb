@@ -1,19 +1,26 @@
-
+<%= render partial: 'spree/admin/shared/configuration_menu' %>
 
 <% content_for :page_title do %>
-  <%= t('spree.comment_types') %>
+  <%= I18n.t('spree.comment_types') %>
 <% end %>
 
 <% content_for :page_actions do %>
-  <%= button_to t('spree.new_comment_type'), new_object_url, icon: 'icon-plus', id: 'admin_new_comment_type_link' %>
+  <li>
+    <%= link_to I18n.t('spree.new_comment_type'), new_object_url, icon: 'icon-plus', id: 'admin_new_comment_type_link' %>
+  </li>
 <% end %>
 
 <% if @comment_types.any? %>
   <table class="index table" id='listing_comment_types'>
+    <colgroup>
+      <col style="width: 40%">
+      <col style="width: 45%">
+      <col style="width: 15%">
+    </colgroup>
     <thead>
       <tr data-hook="admin_comment_types_index_headers">
-        <th><%= t('spree.name') %></th>
-        <th><%= t('spree.applies_to') %></th>
+        <th><%= I18n.t('spree.name') %></th>
+        <th><%= I18n.t('spree.applies_to') %></th>
         <th data-hook="admin_comment_types_index_header_actions" class="actions"></th>
       </tr>
     </thead>
@@ -33,7 +40,7 @@
   </table>
 <% else %>
   <div class="alpha twelve columns no-objects-found">
-    <%= t('spree.no_resource_found', resource: I18n.t(:comment_types, scope: 'spree')) %>,
-    <%= link_to t('spree.add_one'), spree.new_admin_comment_type_path %>!
+    <%= I18n.t('spree.no_resource_found', resource: I18n.t(:comment_types, scope: 'spree')) %>,
+    <%= link_to I18n.t('spree.add_one'), spree.new_admin_comment_type_path %>!
   </div>
 <% end %>
