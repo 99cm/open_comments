@@ -1,7 +1,7 @@
 Open Comments
 ==============
 
-This extension adds comment and message functionality to Open. It allows administrators and customers to communicate about order processing and fulfillment if needed.
+This extension adds comment and message functionality to [Open][1]. It allows administrators and customers to communicate about order processing and fulfillment if needed.
 
 Open Comments also supports optional comment Types which can be defined per commentable object (i.e. Order, Shipment, etc) via the admin Configuration tab.
 
@@ -32,3 +32,11 @@ Run the migrations if you did not during the installation generator:
 Start your server: 
 
     rails s
+
+---
+
+Copyright (c) 2019 [Leo Wang][3] and other [contributors][2]. released under the [New BSD License][3]
+
+[1]: https://github.com/99cm/open
+[2]: https://github.com/99cm/open_comments/graphs/contributors
+[3]: https://github.com/99cm/open_comments/blob/master/LICENSE.md
