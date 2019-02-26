@@ -5,7 +5,7 @@ This extension adds comment and message functionality to [Open][1]. It allows ad
 
 Open Comments also supports optional comment Types which can be defined per commentable object (i.e. Order, Shipment, etc) via the admin Configuration tab.
 
-This is based on a fork / rename of jderrett/spree-order-comments, and subsequently spree/spree-comments. We added sending message functionality and user order comments when ordering to allow the customer addressing concerns.
+This is based on a fork / rename of jderrett/spree-order-comments, and subsequently spree/spree-comments. We added sending message functionality and order comments for checkout to allow end user addressing concerns.
 
 Notes:
 

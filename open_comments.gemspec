@@ -15,7 +15,7 @@ Gem::Specification.new do |s|
   s.require_path  = 'lib'
   s.requirements << 'none'
 
-  open_version = '>= 2.5.0'
+  open_version = 'master'
   s.add_dependency 'open_api', open_version
   s.add_dependency 'open_backend', open_version
   s.add_dependency 'open_core', spree_version
